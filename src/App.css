@@ -1,0 +1,34 @@
+.app {
+  padding: 2rem;
+  text-align: center;
+}
+
+.settings {
+  border-bottom: 1px solid;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+
+  & > * {
+    display: block;
+  }
+
+  label {
+    margin: 10px;
+  }
+
+  input[type="number"] {
+    width: 40px;
+    margin: 0 10px;
+  }
+}
+
+.counter {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+
+	pre {
+		font-size: 2rem;
+		width: 100%;
+	}
+}
