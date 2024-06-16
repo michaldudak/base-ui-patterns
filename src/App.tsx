@@ -2,6 +2,22 @@ import * as React from 'react';
 import './App.css';
 import * as Counter from './Counter';
 import * as ReducerCounter from './ReducerCounter';
+import { CounterRootState, CounterAction } from './ReducerCounter';
+
+function customReducer(
+	state: CounterRootState,
+	action: CounterAction,
+	next: React.Reducer<CounterRootState, CounterAction>,
+) {
+	const newState = next(state, action);
+	if (action.type === 'increment') {
+		if (newState.value % 100 === 13) {
+			return { ...newState, value: newState.value + 1 };
+		}
+	}
+
+	return newState;
+}
 
 function App() {
 	const [disabled, setDisabled] = React.useState(false);
@@ -29,6 +45,13 @@ function App() {
 
 			<ReducerCounter.Root disabled={disabled} step={step}>
 				<p>Reducer</p>
+				<ReducerCounter.Display />
+				<ReducerCounter.Increment />
+				<ReducerCounter.Reset />
+			</ReducerCounter.Root>
+
+			<ReducerCounter.Root disabled={disabled} step={step} reducer={customReducer}>
+				<p>Customized Reducer</p>
 				<ReducerCounter.Display />
 				<ReducerCounter.Increment />
 				<ReducerCounter.Reset />
