@@ -51,7 +51,7 @@ function App() {
 			</ReducerCounter.Root>
 
 			<ReducerCounter.Root disabled={disabled} step={step} reducer={customReducer}>
-				<p>Customized Reducer</p>
+				<p>Customized reducer</p>
 				<ReducerCounter.Display />
 				<ReducerCounter.Increment />
 				<ReducerCounter.Reset />
